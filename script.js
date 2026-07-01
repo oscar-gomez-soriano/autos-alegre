@@ -65,15 +65,45 @@ if ("IntersectionObserver" in window) {
 }
 
 const sections = Array.from(document.querySelectorAll("main section[id]"));
+const setActiveNavLink = (activeLink) => {
+  navLinks.forEach((link) => {
+    link.classList.toggle("is-active", link === activeLink);
+  });
+};
+
+const updatePageActiveLink = () => {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const homeLink = document.querySelector('.main-nav a[href="#top"]');
+  const pageLink = Array.from(navLinks).find((link) => {
+    const href = link.getAttribute("href") || "";
+    return href.split("#")[0] === currentPage;
+  });
+
+  if (homeLink && currentPage === "index.html" && window.scrollY < 160) {
+    setActiveNavLink(homeLink);
+    return;
+  }
+
+  if (pageLink && !window.location.hash) {
+    setActiveNavLink(pageLink);
+  }
+};
+
+updatePageActiveLink();
+
 if ("IntersectionObserver" in window) {
   const navObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
-        navLinks.forEach((link) => {
-          link.classList.toggle("is-active", link.getAttribute("href") === `#${entry.target.id}`);
-        });
+        const activeSectionLink = Array.from(navLinks).find(
+          (link) => link.getAttribute("href") === `#${entry.target.id}`
+        );
+
+        if (activeSectionLink) {
+          setActiveNavLink(activeSectionLink);
+        }
       });
     },
     { rootMargin: "-42% 0px -48% 0px" }
@@ -81,6 +111,8 @@ if ("IntersectionObserver" in window) {
 
   sections.forEach((section) => navObserver.observe(section));
 }
+
+window.addEventListener("scroll", updatePageActiveLink, { passive: true });
 
 const principleButtons = document.querySelectorAll(".principle-item");
 const principleDetail = document.getElementById("principleDetail");
