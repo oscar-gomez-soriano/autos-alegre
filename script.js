@@ -159,6 +159,56 @@ driverCards.forEach((card) => {
   });
 });
 
+const bookingSummaryIds = {
+  service: "summaryService",
+  origin: "summaryOrigin",
+  destination: "summaryDestination",
+  date: "summaryDate",
+  time: "summaryTime",
+  passengers: "summaryPassengers",
+  luggage: "summaryLuggage",
+  vehicle: "summaryVehicle",
+  driver: "summaryDriver",
+};
+
+const setBookingSummaryValue = (key, value) => {
+  const target = document.getElementById(bookingSummaryIds[key]);
+  if (!target) return;
+
+  const cleanValue = String(value || "").trim();
+  target.textContent = cleanValue || "Pendiente";
+};
+
+document.querySelectorAll("[data-booking-group]").forEach((group) => {
+  const summaryKey = group.dataset.bookingGroup;
+  const options = group.querySelectorAll("button[data-value]");
+
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      setPressedState(options, option);
+      setBookingSummaryValue(summaryKey, option.dataset.value);
+    });
+  });
+});
+
+document.querySelectorAll("[data-booking-field]").forEach((field) => {
+  const updateField = () => setBookingSummaryValue(field.dataset.bookingField, field.value);
+
+  field.addEventListener("input", updateField);
+  field.addEventListener("change", updateField);
+  updateField();
+});
+
+document.querySelectorAll("[data-booking-demo]").forEach((form) => {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const message = form.querySelector(".form-message");
+    if (message) {
+      message.textContent = "Demo visual: no se ha enviado ninguna reserva ni se han guardado datos.";
+    }
+  });
+});
+
 contactForms.forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();

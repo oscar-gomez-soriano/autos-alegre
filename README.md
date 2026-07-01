@@ -1,11 +1,12 @@
 # Autos Alegre
 
-Web estatica para Autos Alegre con una pagina principal de marca y una pagina prioritaria de conductores.
+Web estatica para Autos Alegre con una pagina principal de marca, una pagina prioritaria de conductores y una demo visual de reservas.
 
 ## Paginas
 
 - `index.html`: landing principal de The Alegre Style.
 - `conductores.html`: presentacion de conductores con retratos, estadisticas e interacciones.
+- `reservas.html`: prototipo visual de reservas sin envio ni guardado de datos.
 
 ## Ejecutar en local
 
@@ -17,6 +18,7 @@ Despues abre:
 
 - `http://127.0.0.1:8000/index.html`
 - `http://127.0.0.1:8000/conductores.html`
+- `http://127.0.0.1:8000/reservas.html`
 
 ## Assets principales
 
