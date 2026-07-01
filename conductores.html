@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conductores | Autos Alegre</title>
+  <meta name="description" content="Presentacion premium de conductores Autos Alegre con perfiles, estadisticas de servicio y estilo profesional." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=30" />
+</head>
+<body class="drivers-page">
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="index.html" aria-label="Autos Alegre inicio">
+      <span class="brand-seal">A</span>
+      <span class="brand-text">
+        <span class="brand-name">Autos Alegre</span>
+        <span class="brand-since">Since 1945</span>
+      </span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="main-nav" aria-label="Secciones principales">
+      <a class="is-active" href="conductores.html">Conductores</a>
+      <a href="index.html#alegre-style">Style</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="#driver-cards">Cartas</a>
+      <a href="#driver-method">Criterios</a>
+      <a href="index.html#fleet">Fleet</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="drivers-hero" aria-labelledby="drivers-title">
+      <div class="drivers-hero-copy" data-reveal>
+        <p class="section-kicker">Old school chauffeurs</p>
+        <h1 id="drivers-title">old school chauffeurs</h1>
+        <p>Conducir es una profesion. Acompa&ntilde;ar personas es un oficio.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#driver-cards">Ver conductores <span aria-hidden="true">-></span></a>
+          <a class="ghost-link" href="#driver-method">Como elegimos</a>
+        </div>
+      </div>
+      <div class="drivers-hero-panel" data-reveal aria-label="Resumen de seleccion">
+        <span>The Alegre Style</span>
+        <strong>Personas que representan la marca</strong>
+        <p>Perfilamos cada servicio segun agenda, idioma, tipo de cliente, ciudad y nivel de acompasamiento necesario.</p>
+      </div>
+    </section>
+
+    <section class="driver-showcase" id="driver-cards" aria-labelledby="cards-title">
+      <div class="section-heading" data-reveal>
+        <p class="section-kicker centered">Ch&oacute;fer concierge</p>
+        <h2 id="cards-title">Conoce a quienes representan The Alegre Style.</h2>
+        <p class="section-intro">Retratos de ejemplo y estadisticas orientativas para elegir el perfil adecuado.</p>
+      </div>
+
+      <div class="driver-card-grid">
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card is-featured" type="button" data-driver-card aria-label="Ver perfil de Jordi Marin">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>94</strong><em>EXEC</em></span>
+            <img class="driver-photo" src="driver-portrait-01.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">Jordi Marin</span>
+            <span class="driver-role">Corporate & Airport</span>
+            <span class="driver-stats">
+              <span><strong>97</strong> Puntualidad</span><span><strong>94</strong> Discreci&oacute;n</span>
+              <span><strong>95</strong> BCN</span><span><strong>91</strong> Protocolo</span>
+              <span><strong>88</strong> Idiomas</span><span><strong>93</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">Perfil sereno y muy preciso con horarios. Ideal para directivos, aeropuertos y agendas donde cada minuto cuenta.</p>
+        </article>
+
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card" type="button" data-driver-card aria-label="Ver perfil de Marta Rovira">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>92</strong><em>VIP</em></span>
+            <img class="driver-photo" src="driver-portrait-02.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">Marta Rovira</span>
+            <span class="driver-role">VIP Guest Care</span>
+            <span class="driver-stats">
+              <span><strong>93</strong> Puntualidad</span><span><strong>98</strong> Discreci&oacute;n</span>
+              <span><strong>90</strong> BCN</span><span><strong>96</strong> Protocolo</span>
+              <span><strong>91</strong> Idiomas</span><span><strong>94</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">Especialista en atenci&oacute;n de invitados internacionales. Lee muy bien el tono del viaje y mantiene una presencia impecable.</p>
+        </article>
+
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card" type="button" data-driver-card aria-label="Ver perfil de David Soler">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>90</strong><em>EVT</em></span>
+            <img class="driver-photo" src="driver-portrait-03.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">David Soler</span>
+            <span class="driver-role">Events & Routes</span>
+            <span class="driver-stats">
+              <span><strong>92</strong> Puntualidad</span><span><strong>89</strong> Discreci&oacute;n</span>
+              <span><strong>97</strong> BCN</span><span><strong>87</strong> Protocolo</span>
+              <span><strong>84</strong> Idiomas</span><span><strong>96</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">Muy fuerte en rutas, eventos y cambios de &uacute;ltima hora. Recomendado cuando la ciudad y la log&iacute;stica mandan.</p>
+        </article>
+
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card" type="button" data-driver-card aria-label="Ver perfil de Carlos Vidal">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>91</strong><em>FAM</em></span>
+            <img class="driver-photo" src="driver-portrait-04.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">Carlos Vidal</span>
+            <span class="driver-role">Family & Long Stay</span>
+            <span class="driver-stats">
+              <span><strong>90</strong> Puntualidad</span><span><strong>92</strong> Discreci&oacute;n</span>
+              <span><strong>91</strong> BCN</span><span><strong>89</strong> Protocolo</span>
+              <span><strong>86</strong> Idiomas</span><span><strong>98</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">Cercano, flexible y paciente. Encaja especialmente bien en servicios familiares, estancias largas y planes cambiantes.</p>
+        </article>
+
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card" type="button" data-driver-card aria-label="Ver perfil de Laura Casas">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>93</strong><em>PRO</em></span>
+            <img class="driver-photo" src="driver-portrait-05.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">Laura Casas</span>
+            <span class="driver-role">Protocol & Hosts</span>
+            <span class="driver-stats">
+              <span><strong>94</strong> Puntualidad</span><span><strong>96</strong> Discreci&oacute;n</span>
+              <span><strong>88</strong> BCN</span><span><strong>98</strong> Protocolo</span>
+              <span><strong>92</strong> Idiomas</span><span><strong>90</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">Perfil muy cuidado para recepciones, protocolo y acompa&ntilde;amiento de invitados que esperan un trato formal.</p>
+        </article>
+
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card" type="button" data-driver-card aria-label="Ver perfil de Victor Navas">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>89</strong><em>OPS</em></span>
+            <img class="driver-photo" src="driver-portrait-06.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">Victor Navas</span>
+            <span class="driver-role">Operations</span>
+            <span class="driver-stats">
+              <span><strong>91</strong> Puntualidad</span><span><strong>88</strong> Discreci&oacute;n</span>
+              <span><strong>94</strong> BCN</span><span><strong>86</strong> Protocolo</span>
+              <span><strong>82</strong> Idiomas</span><span><strong>95</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">Muy resolutivo en operativas complejas, recogidas encadenadas y servicios donde hay que reaccionar sin ruido.</p>
+        </article>
+
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card" type="button" data-driver-card aria-label="Ver perfil de Nuria Pons">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>95</strong><em>INT</em></span>
+            <img class="driver-photo" src="driver-portrait-07.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">Nuria Pons</span>
+            <span class="driver-role">International</span>
+            <span class="driver-stats">
+              <span><strong>95</strong> Puntualidad</span><span><strong>97</strong> Discreci&oacute;n</span>
+              <span><strong>89</strong> BCN</span><span><strong>94</strong> Protocolo</span>
+              <span><strong>98</strong> Idiomas</span><span><strong>92</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">La mejor opci&oacute;n cuando el idioma, la confianza del invitado internacional y la lectura cultural son clave.</p>
+        </article>
+
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card" type="button" data-driver-card aria-label="Ver perfil de Albert Costa">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>88</strong><em>CITY</em></span>
+            <img class="driver-photo" src="driver-portrait-08.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">Albert Costa</span>
+            <span class="driver-role">City Expert</span>
+            <span class="driver-stats">
+              <span><strong>89</strong> Puntualidad</span><span><strong>87</strong> Discreci&oacute;n</span>
+              <span><strong>99</strong> BCN</span><span><strong>84</strong> Protocolo</span>
+              <span><strong>80</strong> Idiomas</span><span><strong>93</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">Conoce muy bien Barcelona, accesos, hoteles y horarios dif&iacute;ciles. Ideal para visitas urbanas y rutas alternativas.</p>
+        </article>
+
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card" type="button" data-driver-card aria-label="Ver perfil de Elena Puig">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>90</strong><em>LUX</em></span>
+            <img class="driver-photo" src="driver-portrait-09.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">Elena Puig</span>
+            <span class="driver-role">Luxury Retail</span>
+            <span class="driver-stats">
+              <span><strong>92</strong> Puntualidad</span><span><strong>95</strong> Discreci&oacute;n</span>
+              <span><strong>87</strong> BCN</span><span><strong>93</strong> Protocolo</span>
+              <span><strong>90</strong> Idiomas</span><span><strong>91</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">Perfil elegante para compras privadas, hoteler&iacute;a de lujo y servicios donde el detalle visual importa mucho.</p>
+        </article>
+
+        <article class="driver-profile" data-reveal>
+          <button class="driver-card" type="button" data-driver-card aria-label="Ver perfil de Pau Ferrer">
+            <span class="card-shine" aria-hidden="true"></span>
+            <span class="card-topline"><strong>87</strong><em>NGT</em></span>
+            <img class="driver-photo" src="driver-portrait-10.jpg" alt="" aria-hidden="true" />
+            <span class="driver-name">Pau Ferrer</span>
+            <span class="driver-role">Night & Events</span>
+            <span class="driver-stats">
+              <span><strong>90</strong> Puntualidad</span><span><strong>90</strong> Discreci&oacute;n</span>
+              <span><strong>92</strong> BCN</span><span><strong>83</strong> Protocolo</span>
+              <span><strong>79</strong> Idiomas</span><span><strong>97</strong> Adaptaci&oacute;n</span>
+            </span>
+          </button>
+          <p class="driver-description">Muy adecuado para eventos nocturnos, salidas escalonadas y servicios con esperas variables o cambios de cierre.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="driver-method" id="driver-method">
+      <div class="section-copy" data-reveal>
+        <p class="section-kicker">Selection criteria</p>
+        <h2>Las estadisticas estan pensadas para elegir mejor, no para competir.</h2>
+        <p>Cada carta resume cualidades utiles para asignar el conductor correcto segun tipo de servicio, cliente y contexto.</p>
+      </div>
+      <div class="criteria-grid" data-reveal>
+        <article>
+          <span>01</span>
+          <h3>Puntualidad</h3>
+          <p>Capacidad de anticipar trafico, esperas, accesos y tiempos reales.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Discrecion</h3>
+          <p>Saber estar sin invadir, especialmente en viajes sensibles.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>BCN</h3>
+          <p>Conocimiento local de rutas, hoteles, eventos y alternativas.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Adaptacion</h3>
+          <p>Respuesta ante cambios de agenda, idioma, ritmo o necesidades.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="services-contact drivers-contact" id="contact">
+      <div class="section-copy" data-reveal>
+        <p class="section-kicker">Driver request</p>
+        <h2>Cu&eacute;ntanos el tipo de cliente y te asignamos el perfil adecuado.</h2>
+        <p>Podemos priorizar discrecion, idiomas, conocimiento local, protocolo corporativo o flexibilidad operativa.</p>
+      </div>
+      <form class="contact-form" data-reveal>
+        <p class="section-kicker">Contact Us</p>
+        <label>
+          Nombre
+          <input type="text" name="name" placeholder="Nombre completo" required />
+        </label>
+        <label>
+          Telefono o email
+          <input type="text" name="contact" placeholder="+34 600 000 000" required />
+        </label>
+        <label>
+          Prioridad del conductor
+          <select name="driverPriority" required>
+            <option value="">Selecciona una prioridad</option>
+            <option>Maxima discrecion</option>
+            <option>Conocimiento Barcelona</option>
+            <option>Idiomas</option>
+            <option>Eventos y cambios de agenda</option>
+            <option>Perfil familiar</option>
+          </select>
+        </label>
+        <label>
+          Detalles
+          <textarea name="details" rows="4" placeholder="Fecha, tipo de cliente, idioma, recorrido y preferencias"></textarea>
+        </label>
+        <button class="primary-button full" type="submit">Solicitar conductor <span aria-hidden="true">-></span></button>
+        <p class="form-message" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Autos Alegre &middot; Barcelona &middot; Since 1945</p>
+    <a href="#top">Volver arriba</a>
+  </footer>
+
+  <script src="script.js?v=30"></script>
+</body>
+</html>
