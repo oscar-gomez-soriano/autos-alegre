@@ -5,46 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conductores | Autos Alegre</title>
   <meta name="description" content="Presentacion premium de conductores Autos Alegre con perfiles, estadisticas de servicio y estilo profesional." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=41" />
+  <link rel="stylesheet" href="styles.css?v=50" />
 </head>
 <body class="drivers-page">
-  <div class="scroll-progress" aria-hidden="true"></div>
-
-  <header class="site-header" id="top">
-    <a class="brand" href="index.html" aria-label="Autos Alegre inicio">
-      <span class="brand-seal">A</span>
-      <span class="brand-text">
-        <span class="brand-name">Autos Alegre</span>
-        <span class="brand-since">Since 1945</span>
-      </span>
-    </a>
-    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <nav class="main-nav" aria-label="Secciones principales">
-      <a href="index.html">Inicio</a>
-      <a class="is-active" href="conductores.html">Conductores</a>
-      <a href="reservas.html">Reservas</a>
-      <a href="index.html#alegre-style">Style</a>
-      <a href="index.html#fleet">Fleet</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </header>
+  <header class="site-header" data-header><a class="brand" href="index.html" aria-label="Autos Alegre, inicio"><span class="brand-seal">A</span><span class="brand-name">Autos Alegre</span><span class="brand-since">Since 1945</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menú</button><nav class="main-nav" id="main-nav" aria-label="Navegación principal"><a href="index.html">Alegre Style</a><a class="is-active" href="conductores.html">Conductores</a><a href="backstage.html">Backstage</a><a href="historia.html">Historia</a><a href="flota.html">Flota</a><a href="servicios.html">Servicios</a><a href="contacto.html">Contacto</a></nav><a class="header-cta" href="reservas.html">Reservar</a></header>
 
   <main>
     <section class="drivers-hero" aria-labelledby="drivers-title">
       <div class="drivers-hero-copy" data-reveal>
-        <p class="section-kicker">Old school chauffeurs</p>
-        <h1 id="drivers-title">old school chauffeurs</h1>
-        <p>Conducir es una profesion. Acompa&ntilde;ar personas es un oficio.</p>
+        <p class="eyebrow">Old school chauffeurs</p>
+        <h1 id="drivers-title">Personas que<br /><em>representan la marca.</em></h1>
+        <p>Conducir es una profesión. Acompañar personas es un oficio.</p>
         <div class="hero-actions">
-          <a class="primary-button" href="#driver-cards">Ver conductores <span aria-hidden="true">-></span></a>
-          <a class="ghost-link" href="#driver-method">Como elegimos</a>
+          <a class="primary-link" href="#driver-cards">Ver conductores <span aria-hidden="true">→</span></a>
+          <a class="outline-link" href="#driver-method">Cómo elegimos</a>
         </div>
       </div>
       <div class="drivers-hero-panel" data-reveal aria-label="Resumen de seleccion">
@@ -56,7 +30,7 @@
 
     <section class="driver-showcase" id="driver-cards" aria-labelledby="cards-title">
       <div class="section-heading" data-reveal>
-        <p class="section-kicker centered">Ch&oacute;fer concierge</p>
+        <p class="eyebrow centered">Ch&oacute;fer concierge</p>
         <h2 id="cards-title">Conoce a quienes representan The Alegre Style.</h2>
         <p class="section-intro">Retratos de ejemplo y estadisticas orientativas para elegir el perfil adecuado.</p>
       </div>
@@ -291,11 +265,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>Autos Alegre &middot; Barcelona &middot; Since 1945</p>
-    <a href="#top">Volver arriba</a>
-  </footer>
-
-  <script src="script.js?v=41"></script>
+  <footer class="site-footer"><a class="footer-brand" href="index.html">Autos Alegre</a><p>Barcelona · Servicio de chófer concierge · Since 1945</p><div><a href="contacto.html">Contacto</a><a href="reservas.html">Reservas</a></div></footer>
+  <script src="script.js?v=50"></script>
 </body>
 </html>

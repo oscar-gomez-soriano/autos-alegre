@@ -1,252 +1,151 @@
-const header = document.querySelector(".site-header");
-const progress = document.querySelector(".scroll-progress");
-const menuToggle = document.querySelector(".menu-toggle");
-const mainNav = document.querySelector(".main-nav");
-const navLinks = document.querySelectorAll(".main-nav a");
-const contactForms = document.querySelectorAll(".contact-form");
-const serviceSelect = document.getElementById("serviceSelect");
+const menuButton = document.querySelector(".menu-toggle");
+const navigation = document.querySelector(".main-nav");
 
-const setPressedState = (items, activeItem) => {
+const setPressed = (items, activeItem) => {
   items.forEach((item) => {
-    const isActive = item === activeItem;
-    item.classList.toggle("is-active", isActive);
-    item.setAttribute("aria-pressed", String(isActive));
+    const active = item === activeItem;
+    item.classList.toggle("is-active", active);
+    item.setAttribute("aria-pressed", String(active));
   });
 };
 
-const updateChrome = () => {
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollRatio = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
-
-  header?.classList.toggle("is-scrolled", window.scrollY > 24);
-  if (progress) {
-    progress.style.width = `${Math.min(scrollRatio, 100)}%`;
-  }
+const closeMenu = () => {
+  navigation?.classList.remove("open");
+  document.body.classList.remove("menu-open");
+  menuButton?.setAttribute("aria-expanded", "false");
 };
 
-updateChrome();
-window.addEventListener("scroll", updateChrome, { passive: true });
+menuButton?.addEventListener("click", () => {
+  const open = navigation?.classList.toggle("open") ?? false;
+  document.body.classList.toggle("menu-open", open);
+  menuButton.setAttribute("aria-expanded", String(open));
+});
 
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mainNav.classList.toggle("open");
-    document.body.classList.toggle("menu-open", isOpen);
-    header?.classList.toggle("menu-active", isOpen);
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mainNav.classList.remove("open");
-      document.body.classList.remove("menu-open");
-      header?.classList.remove("menu-active");
-      menuToggle.setAttribute("aria-expanded", "false");
-    });
-  });
-}
+navigation?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeMenu();
+});
 
 const revealItems = document.querySelectorAll("[data-reveal]");
 if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.16 }
-  );
-
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
   revealItems.forEach((item) => revealObserver.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-const sections = Array.from(document.querySelectorAll("main section[id]"));
-const setActiveNavLink = (activeLink) => {
-  navLinks.forEach((link) => {
-    link.classList.toggle("is-active", link === activeLink);
-  });
-};
-
-const updatePageActiveLink = () => {
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-  const homeLink = document.querySelector('.main-nav a[href="#top"]');
-  const pageLink = Array.from(navLinks).find((link) => {
-    const href = link.getAttribute("href") || "";
-    return href.split("#")[0] === currentPage;
-  });
-
-  if (homeLink && currentPage === "index.html" && window.scrollY < 160) {
-    setActiveNavLink(homeLink);
-    return;
-  }
-
-  if (pageLink && !window.location.hash) {
-    setActiveNavLink(pageLink);
-  }
-};
-
-updatePageActiveLink();
-
-if ("IntersectionObserver" in window) {
-  const navObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-
-        const activeSectionLink = Array.from(navLinks).find(
-          (link) => link.getAttribute("href") === `#${entry.target.id}`
-        );
-
-        if (activeSectionLink) {
-          setActiveNavLink(activeSectionLink);
-        }
-      });
-    },
-    { rootMargin: "-42% 0px -48% 0px" }
-  );
-
-  sections.forEach((section) => navObserver.observe(section));
-}
-
-window.addEventListener("scroll", updatePageActiveLink, { passive: true });
-
-const principleButtons = document.querySelectorAll(".principle-item");
-const principleDetail = document.getElementById("principleDetail");
-principleButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    setPressedState(principleButtons, button);
-    if (principleDetail) {
-      principleDetail.textContent = button.dataset.principle;
-    }
-  });
-});
-
-const processTabs = document.querySelectorAll(".process-tab");
-const processStage = document.getElementById("processStage");
-const processCopy = document.getElementById("processCopy");
-processTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    setPressedState(processTabs, tab);
-    if (processStage) processStage.textContent = tab.dataset.stage;
-    if (processCopy) processCopy.textContent = tab.dataset.copy;
-  });
-});
-
-const timelineItems = document.querySelectorAll(".timeline-item");
-const heritageLine = document.getElementById("heritageLine");
-timelineItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    setPressedState(timelineItems, item);
-    if (heritageLine) {
-      heritageLine.textContent = `${item.dataset.year} - ${item.dataset.copy}`;
-    }
-  });
-});
-
-const fleetOptions = document.querySelectorAll(".fleet-option");
-const fleetCopy = document.getElementById("fleetCopy");
-fleetOptions.forEach((option) => {
-  option.addEventListener("click", () => {
-    setPressedState(fleetOptions, option);
-    if (fleetCopy) {
-      fleetCopy.textContent = option.dataset.copy;
-    }
-  });
-});
-
-const servicePills = document.querySelectorAll(".service-pill");
-servicePills.forEach((pill) => {
-  pill.addEventListener("click", () => {
-    servicePills.forEach((item) => item.classList.toggle("is-active", item === pill));
-    if (serviceSelect) {
-      serviceSelect.value = pill.dataset.service;
-    }
-  });
-});
-
-const driverCards = document.querySelectorAll("[data-driver-card]");
-driverCards.forEach((card) => {
+document.querySelectorAll("[data-driver-card]").forEach((card) => {
   card.addEventListener("pointermove", (event) => {
-    const rect = card.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    const rotateY = ((x / rect.width) - 0.5) * 14;
-    const rotateX = ((y / rect.height) - 0.5) * -14;
-
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const bounds = card.getBoundingClientRect();
+    const x = event.clientX - bounds.left;
+    const y = event.clientY - bounds.top;
+    const rotateY = (x / bounds.width - 0.5) * 9;
+    const rotateX = (y / bounds.height - 0.5) * -9;
     card.classList.add("is-tilting");
-    card.style.setProperty("--mx", `${(x / rect.width) * 100}%`);
-    card.style.setProperty("--my", `${(y / rect.height) * 100}%`);
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    card.style.setProperty("--mx", `${(x / bounds.width) * 100}%`);
+    card.style.setProperty("--my", `${(y / bounds.height) * 100}%`);
+    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
   });
-
   card.addEventListener("pointerleave", () => {
     card.classList.remove("is-tilting");
     card.style.transform = "";
-    card.style.removeProperty("--mx");
-    card.style.removeProperty("--my");
+  });
+});
+
+const timelineCards = document.querySelectorAll(".timeline-card");
+const timelineStatement = document.getElementById("timeline-statement");
+timelineCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    setPressed(timelineCards, card);
+    if (timelineStatement) {
+      timelineStatement.textContent = `${card.dataset.story} · ${card.querySelector("em")?.textContent ?? ""}`;
+    }
+  });
+});
+
+const fleetContent = {
+  executive: {
+    kicker: "Executive sedan",
+    title: "Silencio, presencia y precisión.",
+    copy: "La elección ideal para aeropuertos, agendas corporativas y desplazamientos individuales de máxima discreción.",
+    features: ["Hasta 3 pasajeros", "Equipaje ejecutivo", "Confort premium"],
+    image: "hero-chauffeur-pink-tie.png",
+  },
+  van: {
+    kicker: "Premium van",
+    title: "Espacio sin renunciar al detalle.",
+    copy: "Pensada para familias, grupos reducidos, equipaje especial y equipos que necesitan viajar juntos.",
+    features: ["Hasta 7 pasajeros", "Gran capacidad", "Configuración flexible"],
+    image: "autosalegre_cover.jpg",
+  },
+  events: {
+    kicker: "Event fleet",
+    title: "Una operativa que se mueve como una sola.",
+    copy: "Coordinamos múltiples vehículos, horarios y puntos de encuentro para que cada invitado llegue con naturalidad.",
+    features: ["Flota coordinada", "Soporte en tiempo real", "Llegadas escalonadas"],
+    image: "autosalegre_cover.jpg",
+  },
+};
+
+const fleetTabs = document.querySelectorAll(".fleet-tab");
+fleetTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const content = fleetContent[tab.dataset.fleet];
+    if (!content) return;
+    setPressed(fleetTabs, tab);
+    document.getElementById("fleet-kicker").textContent = content.kicker;
+    document.getElementById("fleet-title").textContent = content.title;
+    document.getElementById("fleet-copy").textContent = content.copy;
+    document.getElementById("fleet-features").innerHTML = content.features.map((feature) => `<li>${feature}</li>`).join("");
+    document.getElementById("fleet-image").src = content.image;
   });
 });
 
 const bookingSummaryIds = {
-  service: "summaryService",
-  origin: "summaryOrigin",
-  destination: "summaryDestination",
-  date: "summaryDate",
-  time: "summaryTime",
-  passengers: "summaryPassengers",
-  luggage: "summaryLuggage",
-  vehicle: "summaryVehicle",
-  driver: "summaryDriver",
+  service: "summaryService", origin: "summaryOrigin", destination: "summaryDestination",
+  date: "summaryDate", time: "summaryTime", passengers: "summaryPassengers",
+  luggage: "summaryLuggage", vehicle: "summaryVehicle", driver: "summaryDriver",
 };
 
-const setBookingSummaryValue = (key, value) => {
-  const target = document.getElementById(bookingSummaryIds[key]);
-  if (!target) return;
-
-  const cleanValue = String(value || "").trim();
-  target.textContent = cleanValue || "Pendiente";
+const updateBookingSummary = (key, value) => {
+  const element = document.getElementById(bookingSummaryIds[key]);
+  if (element) element.textContent = String(value || "").trim() || "Pendiente";
 };
 
 document.querySelectorAll("[data-booking-group]").forEach((group) => {
-  const summaryKey = group.dataset.bookingGroup;
   const options = group.querySelectorAll("button[data-value]");
-
-  options.forEach((option) => {
-    option.addEventListener("click", () => {
-      setPressedState(options, option);
-      setBookingSummaryValue(summaryKey, option.dataset.value);
-    });
-  });
+  options.forEach((option) => option.addEventListener("click", () => {
+    setPressed(options, option);
+    updateBookingSummary(group.dataset.bookingGroup, option.dataset.value);
+  }));
 });
 
 document.querySelectorAll("[data-booking-field]").forEach((field) => {
-  const updateField = () => setBookingSummaryValue(field.dataset.bookingField, field.value);
-
-  field.addEventListener("input", updateField);
-  field.addEventListener("change", updateField);
-  updateField();
+  const update = () => updateBookingSummary(field.dataset.bookingField, field.value);
+  field.addEventListener("input", update);
+  field.addEventListener("change", update);
+  update();
 });
 
 document.querySelectorAll("[data-booking-demo]").forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const message = form.querySelector(".form-message");
-    if (message) {
-      message.textContent = "Demo visual: no se ha enviado ninguna reserva ni se han guardado datos.";
-    }
+    if (message) message.textContent = "Vista completada. No se ha enviado ni guardado ningún dato.";
   });
 });
 
-contactForms.forEach((form) => {
+document.querySelectorAll("[data-demo-form], .drivers-contact .contact-form").forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const message = form.querySelector(".form-message");
-    if (message) {
-      message.textContent = "Solicitud recibida. El equipo de Autos Alegre contactar\u00e1 para concretar el servicio.";
-    }
+    if (message) message.textContent = "Demostración visual: el formulario todavía no envía datos.";
   });
 });
